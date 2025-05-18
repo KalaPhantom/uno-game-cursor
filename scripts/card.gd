@@ -17,6 +17,9 @@ func _init(col: CardColor, type: CardType, val: int = -1):
 	value = val
 	_load_texture()
 	
+	
+	# This method assigns and draws a textures
+	## TODO: Improve the regex value handling here for dynamic prototyping
 func _load_texture():
 	var texture_path = "res://Asset Lib/"
 	

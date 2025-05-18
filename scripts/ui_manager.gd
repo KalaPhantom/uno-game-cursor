@@ -1,6 +1,7 @@
 extends Node
 
-@onready var game_manager = get_parent()
+## Preload all data as a variable for easier management of all UI's
+@onready var game_manager = get_parent()    ## We take the parent to set up a direct inheritance without using an object
 @onready var player_hand = $"../PlayerHand"
 @onready var bot_hands = [$"../Bot1Hand", $"../Bot2Hand", $"../Bot3Hand"]
 @onready var discard_pile = $"../CenterContainer/HBoxContainer/DiscardPile"
@@ -13,6 +14,7 @@ extends Node
 @onready var draw_indicator = $"../DrawIndicator"
 @onready var player_labels = [$"../Player1Label", $"../Player2Label", $"../Player3Label", $"../Player4Label"]
 
+## Card Dimensions and default castings
 const CARD_WIDTH = 100
 const CARD_HEIGHT = 150
 const CARD_SPACING = -70
@@ -151,15 +153,18 @@ func update_hands():
 				# Force card to be visible
 				card_texture.show()
 
+## Raises the cards above (Around 20 pixels upon mouse hover)
 func _on_card_hover_enter(card_button: TextureButton):
 	# Raise hovered card
 	card_button.position.y = -20
 	card_button.z_index = 1
 
+## Resets the button to its original positions
 func _on_card_hover_exit(card_button: TextureButton):
 	# Lower card back to normal position
 	card_button.position.y = 0
 	card_button.z_index = 0
+
 
 func update_piles():
 	# Update discard pile

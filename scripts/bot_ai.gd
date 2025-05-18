@@ -94,6 +94,7 @@ func choose_best_card(hand: Array, top_card: Card) -> Card:
 	if playable_cards.is_empty():
 		return null
 		
+	
 	var best_card = null
 	var highest_score = -1.0
 	
@@ -129,7 +130,7 @@ func _calculate_card_score(card: Card) -> float:
 	elif card.card_type == Card.CardType.WILD:
 		score *= 1.5  # High priority for Wild
 	elif card.card_type in [Card.CardType.SKIP, Card.CardType.REVERSE, Card.CardType.DRAW_TWO]:
-		var opponents_with_few_cards = opponent_cards_count.values().count(func(count): return count <= 2)
+		var opponents_with_few_cards = opponent_cards_count.values().count(func(count): return count <= 2) ## return an int
 		score *= (1.5 + (opponents_with_few_cards * 0.2))  # Enhanced bonus for special cards
 	
 	return score

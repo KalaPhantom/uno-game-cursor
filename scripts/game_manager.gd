@@ -1,16 +1,16 @@
 extends Node2D
 
 # Game constants
-const INITIAL_CARDS = 7
-const BOT_THINK_TIME = 1.0
+const INITIAL_CARDS = 7							 ## Default value in in the initial game stage
+const BOT_THINK_TIME = 1.0 						 ## Buffer in mili seconds
 
 # Player management
-var players = []
-var current_player_index = 0
-var direction = 1  # 1 for clockwise, -1 for counter-clockwise
+var players = []							# Player container  - 
+var current_player_index = 0 				# Essential for the
+var direction = 1  							# 1 for clockwise, -1 for counter-clockwise
 
 # Game state
-var deck = []
+var deck = [] 								
 var discard_pile = []
 var game_started = false
 var waiting_for_color = false
@@ -20,15 +20,16 @@ var finished_players = []  # Track players who have finished
 var active_players = []  # Track players still in game
 
 # Signals
-signal game_state_changed
-signal player_turn_started
-signal draw_penalty_changed(amount: int)  # New signal for draw penalties
+signal game_state_changed						# Emmitted when a game state changed
+signal player_turn_started						# Emitted when a turn has started in the game
+signal draw_penalty_changed(amount: int) 		# New signal for draw penalties
 
 # Bot AI instances
-var bot_ais = []
+var bot_ais = [] 				 # For AI handling
 
 func _ready():
 	# Make this scene the main scene if it's run directly
+	
 	if get_parent() == null:
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	else:
@@ -45,6 +46,8 @@ func setup_game():
 	active_players = []
 	
 	# Human player
+	## TODO: Create an individual object both for AI and the human player
+	## Manually adds 
 	players.append({
 		"hand": [],
 		"is_bot": false,
@@ -55,12 +58,13 @@ func setup_game():
 	for i in range(3):
 		var bot_ai = BotAI.new()
 		bot_ais.append(bot_ai)
-		players.append({
+		players.append({       ## parse an AI similar to JSON
 			"hand": [],
 			"is_bot": true,
 			"name": "Bot " + str(i + 1),
 			"ai": bot_ai
 		})
+	
 	
 	# Set active players
 	active_players = players.duplicate()
@@ -147,6 +151,9 @@ func reshuffle_discard_pile():
 		print("Not enough cards to reshuffle!")
 
 func start_game():
+	
+	## TODO: Create a system here that manages the first index position for the player
+	# The first turn must be assigned on each player
 	game_started = true
 	current_player_index = 0
 	process_turn()
@@ -210,6 +217,7 @@ func process_bot_turn(bot):
 			else:
 				next_turn()
 
+## Auto validates the card
 func play_card(player, card):
 	player.hand.erase(card)
 	discard_pile.append(card)

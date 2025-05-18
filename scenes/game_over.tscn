@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dfh04p7mjim88"]
 
-[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_8k4m2"]
+[ext_resource type="Script" uid="uid://chr06t4807wv3" path="res://scripts/game_over.gd" id="1_8k4m2"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -85,4 +85,4 @@ text = "Play Again"
 [node name="MainMenuButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Main Menu" 
+text = "Main Menu"

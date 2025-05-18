@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c8q6mj2l7qgxv"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_m4k2p"]
+[ext_resource type="Script" uid="uid://be4et78hm27d3" path="res://scripts/main_menu.gd" id="1_m4k2p"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -57,4 +57,4 @@ custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
-text = "Quit" 
+text = "Quit"
