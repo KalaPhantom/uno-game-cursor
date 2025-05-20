@@ -1,4 +1,5 @@
-# UNO Game with AI Bots
+# UNO Game with AI Bots using Naive Bayes Classifier and Algorithm 
+
 
 A Godot-based UNO card game featuring 3 AI bots that use Naive Bayes algorithm for decision making.
 
